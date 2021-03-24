@@ -1,0 +1,20 @@
+module.exports = {
+    apps : [{
+      name: "tacoswap-backend",
+      cwd: "tacoswap-backend",
+      script: "npm",
+      args: "run server:start"
+      env: {
+        "NODE_ENV": "production",
+        "LOG_LEVEL": "info",
+        "APP_KEY": "xxxxxxx",
+        "PORT": "3000",
+        "USE_SOCKETS": "",
+        "CORS": "localhost mytests.herokuapp.com",
+        "SITE_URL": "http://api2.tacoswap.io",
+        "INFURA_URL": "wss://mainnet.infura.io/ws/v3/yyyyy",
+        "MASTER_CONTRACT_ADDRESS": "0xaaaaaa",
+        "WETH": "0xbbbbb"
+      },
+    }]
+  }
