@@ -10,7 +10,8 @@ export type ErrorMiddleware = (err: Error, req: Request, res: Response, next: Ne
 export type ApiHandlerVersioned = Dictionary<ExpressHandler[]>;
 
 export interface Route {
-    path: string;
+    rootPath?: string;
+    path?: string;
     method: HttpMethod;
     handlers: ApiHandlerVersioned;
 }

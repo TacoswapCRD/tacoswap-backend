@@ -5,7 +5,7 @@ import { getPools } from './blockchain.controller';
 
 export default [
     {
-        path: '/pools',
+        rootPath: '/pools',
         method: 'get',
         handlers: {
             v1: [

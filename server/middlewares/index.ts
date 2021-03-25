@@ -27,7 +27,7 @@ export const applyMiddlewares = (app: Express): void => {
 
 export const applyRoutes = (prefix: string, routes: Route[], router: Router, apiVersion = 'v1'): void => {
     for (const route of routes) {
-        const { method, path, handlers }: { method: HttpMethod; path: string; handlers: ApiHandlerVersioned } = route;
+        const { method, path, handlers, rootPath }: Route = route;
 
         const versionedApiHanlers: ExpressHandler[] = handlers[apiVersion];
 
@@ -35,7 +35,15 @@ export const applyRoutes = (prefix: string, routes: Route[], router: Router, api
             return console.warn(`${path} not available in api ${apiVersion}`);
         }
 
-        const url = joinUrl('/api', apiVersion, prefix, path);
+        let url;
+
+        if (path) {
+            url = joinUrl('/api', apiVersion, prefix, path);
+        } else if (rootPath) {
+            url = rootPath;
+        } else {
+            throw new Error(`Neither 'path' not 'rootPath' defined for route`);
+        }
 
         logger.debug(`Applying route "${method}" handler for ${url}`);
 
