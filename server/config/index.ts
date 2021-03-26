@@ -80,4 +80,7 @@ const config: Config = {
     },
 };
 
+console.log('Started with configuration time:');
+console.log(JSON.stringify(config, null, 2));
+
 export default config;
